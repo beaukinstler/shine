@@ -4,7 +4,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.first_name, null: false
       t.last_name, null: false
       t.email, null: false
-      t.username, null:false
+      t.username, null: false
       t.timestamps null: false
     end
     add_index :customer, :email, unique: true
