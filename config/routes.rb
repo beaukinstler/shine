@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get 'customers/index'
+
+  get 'customers_controller/index'
+
   devise_for :users
   get 'dashboard/index'
   root 'dashboard#index'
+  resources :customers, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
