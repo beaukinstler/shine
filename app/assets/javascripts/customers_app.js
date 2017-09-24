@@ -1,8 +1,15 @@
 var app = angular.module("customers",[]);
 
-var CustomerSearchController = function($scope){
+var CustomerSearchController = function($scope,$http){
     $scope.customers = [];
     $scope.search = function(searchTerm){
+        $http.get("/customers.json",
+                    {"params":{"keywords":searchTerm}})
+                    .then(function(response){
+                        $scope.customers = response.data;
+                    },function(response){
+                        alert("There was a problem:" + response.status)
+                    })
         $scope.customers = [
             {
                 "first_name":"Schuyler",
@@ -29,5 +36,5 @@ var CustomerSearchController = function($scope){
     }
 }
 
-app.controller("CustomerSearchController", ["$scope",CustomerSearchController]);
+app.controller("CustomerSearchController", ["$scope","$http",CustomerSearchController]);
 
