@@ -52,7 +52,6 @@ feature "Customer Search" do
 
     within "section.search-form" do
       fill_in "keywords", with: "pat"
-      sleep(2)
     end
 
     within "section.search-results" do
@@ -75,7 +74,6 @@ feature "Customer Search" do
 
     within "section.search-form" do
       fill_in "keywords", with: "pat123@somewhere.net"
-      sleep(2)
     end
     within "section.search-results" do
       expect(page).to have_content("Results")
